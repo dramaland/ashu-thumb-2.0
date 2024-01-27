@@ -11,7 +11,7 @@ API_ID = os.environ.get("API_ID", "27808193")
 
 API_HASH = os.environ.get("API_HASH", "c9964aa48c0fde0a3e7fee755a1b8a4e")
 
-BOT_TOKEN = os.environ.get("BOT_TOKEN", "6773697624:AAHkzuMir9droKuKg5kB4aBOvOZ9y98V2G4") 
+BOT_TOKEN = os.environ.get("BOT_TOKEN", "6706677415:AAHB_2h_qJ0aaIetwcX07YPkJGz5N1bLPRo") 
 
 FORCE_SUB = os.environ.get("FORCE_SUB", "KOREAN_DRAMA_FILES_HINDI") 
 
