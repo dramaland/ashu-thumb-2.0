@@ -54,3 +54,17 @@ class Bot(Client):
         
 bot = Bot()
 bot.run()
+from pyrogram import Client
+
+# Create a new Pyrogram client
+app = Client("my_account")
+
+async def main():
+    # Synchronize the client's time
+    await app.sync_clock()
+
+    # Start the client
+    await app.start()
+    await app.idle()
+
+app.run(main())
