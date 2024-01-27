@@ -1,7 +1,3 @@
-# Don't Remove Credit @VJ_Botz
-# Subscribe YouTube Channel For Amazing Bot @Tech_VJ
-# Ask Doubt on telegram @KingVJ01
-
 import logging
 import logging.config
 from pyrogram import Client 
@@ -16,8 +12,8 @@ logging.getLogger("pyrogram").setLevel(logging.ERROR)
 
 class Bot(Client):
 
-    def __init__(self):
-        super().__init__(
+    def init(self):
+        super().init(
             name="WebX-Renamer",
             api_id=API_ID,
             api_hash=API_HASH,
@@ -28,30 +24,30 @@ class Bot(Client):
         )
 
     async def start(self):
-       await super().start()
-       me = await self.get_me()
-       self.mention = me.mention
-       self.username = me.username 
-       self.force_channel = FORCE_SUB
-       if FORCE_SUB:
-         try:
-            link = await self.export_chat_invite_link(FORCE_SUB)                  
-            self.invitelink = link
-         except Exception as e:
-            logging.warning(e)
-            logging.warning("Make Sure Bot admin in force sub channel")             
-            self.force_channel = None
-       app = web.AppRunner(await web_server())
-       await app.setup()
-       bind_address = "0.0.0.0"
-       await web.TCPSite(app, bind_address, PORT).start()
-       logging.info(f"{me.first_name} ✅✅ BOT started successfully ✅✅")
-      
+        await self.sync_clock()  # Synchronize the client's time
+
+        await super().start()
+        me = await self.get_me()
+        self.mention = me.mention
+        self.username = me.username 
+        self.force_channel = FORCE_SUB
+        if FORCE_SUB:
+            try:
+                link = await self.export_chat_invite_link(FORCE_SUB)                  
+                self.invitelink = link
+            except Exception as e:
+                logging.warning(e)
+                logging.warning("Make Sure Bot admin in force sub channel")             
+                self.force_channel = None
+        app = web.AppRunner(await web_server())
+        await app.setup()
+        bind_address = "0.0.0.0"
+        await web.TCPSite(app, bind_address, PORT).start()
+        logging.info(f"{me.first_name} ✅✅ BOT started successfully ✅✅")
 
     async def stop(self, *args):
-      await super().stop()      
-      logging.info("Bot Stopped 🙄")
+        await super().stop()      
+        logging.info("Bot Stopped 🙄")
         
 bot = Bot()
 bot.run()
-
