@@ -12,9 +12,10 @@ logging.getLogger("pyrogram").setLevel(logging.ERROR)
 
 class Bot(Client):
 
-    def init(self):
-        super().init(
-            name="WebX-Renamer",
+    def __init__(self):
+        name = "WebX-Renamer"
+        super().__init__(
+            name,
             api_id=API_ID,
             api_hash=API_HASH,
             bot_token=BOT_TOKEN,
